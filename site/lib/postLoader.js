@@ -25,13 +25,15 @@ const getPostByFilename = async postFilename => {
     date: post.data.date,
     contentHtml: contentHtml,
     slug: post.data.slug,
+    imageFilename: post.data.imageFilename,
+    imageCaption: post.data.imageCaption,
   }
 
   return postObject;
 }
 
 export const getAllPosts = async () => {
-  const postFilenames = getPostFilenames();
+  const postFilenames = getPostFilenames().sort((one, two) => one > two ? -1 : 1)
   const posts = [];
 
   for (let postFilename of postFilenames) {
@@ -39,5 +41,5 @@ export const getAllPosts = async () => {
     posts.push(post);
   }
 
-  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  return posts;
 }

@@ -5,18 +5,26 @@ import { getAllPosts } from '../lib/postLoader';
 export default function Home({ allPosts }) {
   return (
   <Layout>
+    <h1>
+      Software & Teams
+      <small>Blog by <a href="https://twitter.com/MikielAgutu">@MikielAgutu</a></small>
+    </h1>
     {
       allPosts.map(post =>
-        <>
-          <p>{post.title}</p>
-          <p>{post.date}</p>
+        <div key={post.slug}>
+          <h2>
+            <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
+              <a>{post.title}</a>
+            </Link>
+            <small>{post.date}</small>
+          </h2>
           <p>{post.excerpt}</p>
-          <p>{post.content}</p>
-
-          <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
-            <a className="hover:underline">{post.title}</a>
-          </Link>
-        </>
+          <p>
+            <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
+              <a>Read</a>
+            </Link>
+          </p>
+        </div>
       )
     }
   </Layout>

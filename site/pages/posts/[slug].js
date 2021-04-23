@@ -1,16 +1,24 @@
 import Layout from '../layout'
 import { getAllPosts } from '../../lib/postLoader';
-import { useRouter } from 'next/router';
 
 export default function Post({ post }) {
+
+  const imageUrl = "/images/" + post.imageFilename;
+
   return (
   <Layout>
     {
         <>
-          <p>{post.title}</p>
-          <p>{post.date}</p>
-          <p>{post.excerpt}</p>
-          <p>{post.content}</p>
+          <figure className="post-figure">
+            <img className="post-image" src={imageUrl} alt={post.imageCaption} />
+            <figcaption>{post.imageCaption}</figcaption>
+          </figure>
+          <h2>
+            {post.title}
+            <small>{post.date}</small>
+            <small><a href="https://twitter.com/MikielAgutu">@MikielAgutu</a></small>
+          </h2>
+          <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
         </>
     }
   </Layout>

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Layout({children}) {
   return (
@@ -6,38 +7,38 @@ export default function Layout({children}) {
     <Head>
       <title>Blog</title>
       <meta charSet="utf-8" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+      <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet" />
     </Head>
 
-    <body>
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="container">
-          <div className="navbar-menu">
-            <div className="navbar-start">
-              <a className="navbar-item" href="/">
-                Home
-              </a>
-          </div>
-        </div>
-      </div>
+    <nav role="navigation">
+      <header>
+        <Link href="/">
+          <a className="nav-home">Software & Teams</a>
+        </Link>
+      </header>
     </nav>
 
-      <section className="section">
-        <div className="container">
-        {children}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-3" /> 
+        <div className="col-md-6">
+          {children}
         </div>
-      </section>
+        <div className="col-md-1" /> 
+      </div>
+    </div>
 
-      <footer className="footer">
-        <div className="content has-text-centered">
-          <p>
-            Copyright © Mikiel Agutu 2021. All rights reserved.
-            <br />
-            This site collects anonymous usage data via Google Analytics.
-          </p>
-        </div>
-      </footer>
-    </body>
+    <footer className="footer">
+      <div>
+        <p>
+          Copyright © Mikiel Agutu 2021. All rights reserved.
+          <br />
+          This site collects anonymous usage data via Google Analytics.
+        </p>
+      </div>
+    </footer>
   </>
   );
 }
