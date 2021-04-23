@@ -1,22 +1,32 @@
-import Head from 'next/head'
+import Layout from './layout'
+import Link from 'next/link'
+import { getAllPosts } from '../lib/postLoader';
 
-export default function Home() {
+export default function Home({ allPosts }) {
   return (
-    <div className="container">
-      <Head>
-        <title>Blog</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  <Layout>
+    {
+      allPosts.map(post =>
+        <>
+          <p>{post.title}</p>
+          <p>{post.date}</p>
+          <p>{post.excerpt}</p>
+          <p>{post.content}</p>
 
-      <main>
-        <h1 className="title">
-          Hello world
-        </h1>
-      </main>
+          <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
+            <a className="hover:underline">{post.title}</a>
+          </Link>
+        </>
+      )
+    }
+  </Layout>
+  );
+}
 
-      <footer>
-        Footer
-      </footer>
-    </div>
-  )
+export const getStaticProps = async () => {
+  const allPosts = await getAllPosts();
+
+  return {
+    props: { allPosts }
+  }
 }
