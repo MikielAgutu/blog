@@ -1,7 +1,7 @@
 ---
 title: >
  Free & open source isn't always free & open
-date: '25th March 2021'
+date: '23rd April 2021'
 slug: 'free-and-open-source-isnt-always-free-and-open'
 imageFilename: 'sea-2.jpg'
 imageCaption: 'Not quite this free and open'

@@ -1,6 +1,6 @@
 ---
 title: 'Learning In Public'
-date: '23rd March 2021'
+date: '23rd April 2021'
 slug: 'learning-in-public'
 imageFilename: 'sea.jpg'
 imageCaption: 'Somewhere in Scotland'
