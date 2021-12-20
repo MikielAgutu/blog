@@ -6,7 +6,7 @@ export default function Post({ post }) {
   const imageUrl = "/images/" + post.imageFilename;
 
   return (
-  <Layout>
+  <Layout slug={post.slug}>
     {
         <>
           <figure className="post-figure">
